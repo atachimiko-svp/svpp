@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{65B8DC50-EC2D-45FF-8709-42FBD949E3FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SVPS.Applus</RootNamespace>
+    <AssemblyName>SVPS.Applus</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ImpromptuInterface, Version=6.2.2.0, Culture=neutral, PublicKeyToken=0b1781c923b2975b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ImpromptuInterface.6.2.2\lib\net40\ImpromptuInterface.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Livet, Version=1.3.0.0, Culture=neutral, PublicKeyToken=b0b1d3f711ef38cb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LivetCask.1.3.1.0\lib\net45\Livet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.6.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.6\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LivetCask.1.3.1.0\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LivetCask.1.3.1.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WcfClientProxyGenerator, Version=2.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WcfClientProxyGenerator.2.2.5\lib\net45\WcfClientProxyGenerator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContentRepository.cs" />
+    <Compile Include="Helper\ApiProxyHelper.cs" />
+    <Compile Include="Manager\ApplicationManager.cs" />
+    <Compile Include="Manager\UxManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SVPCONT\SVPCONT\SVPCONT.csproj">
+      <Project>{01302bf7-4ae1-49ec-b39e-a2759f86d29f}</Project>
+      <Name>SVPCONT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SVPC\SVPC\SVPC.csproj">
+      <Project>{f67d1d24-f605-4096-93c8-95068d5a0e6e}</Project>
+      <Name>SVPC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SVPS.Common\SVPS.Common.csproj">
+      <Project>{6c98de4b-8027-420a-862b-3b0c06400836}</Project>
+      <Name>SVPS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SVPS.Contrib\SVPS.Contrib.csproj">
+      <Project>{26938d63-c560-4a05-9ce5-121c65997bc9}</Project>
+      <Name>SVPS.Contrib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SVPS.Core\SVPS.Core.csproj">
+      <Project>{a5cfac71-f095-4a74-8495-53db0f4fcceb}</Project>
+      <Name>SVPS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SVPS.DataSource\SVPS.DataSource.csproj">
+      <Project>{e01af645-930d-43a9-a6c2-a24aa6c64e52}</Project>
+      <Name>SVPS.DataSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SVPS.Data\SVPS.Data.csproj">
+      <Project>{946498be-4605-46dc-908f-3ce2c724ec21}</Project>
+      <Name>SVPS.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
