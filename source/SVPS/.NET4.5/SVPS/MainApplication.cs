@@ -1,11 +1,15 @@
 ﻿using Livet;
 using log4net;
+using SVPS.Apps.Sample;
 using SVPS.Core;
+using SVPS.Core.Attributes;
+using SVPS.Core.Infrastructures;
 using SVPS.Data.ViewModels;
 using SVPS.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -117,8 +121,13 @@ namespace SVPS
 		static void _InitializeFunctionBlock(ApplicationContextImpl impl)
 		{
 			// 下記のようなコードを追加していく。
-			//var f1 = new UbiFunctionBlock();
-			//impl.ApplicationManager.RegisterFunctionBlock(f1);
+			// 自動化したい・・・
+
+			// TODO: 機能ブロック定義クラスを、自動でアセンブリから検索する
+
+
+			var f1 = new SampleFunctionBlock();
+			impl.ApplicationManager.RegisterFunctionBlock(f1);
 		}
 
 		/// <summary>

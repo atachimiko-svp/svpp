@@ -9,14 +9,15 @@ namespace SVPS.Core.Presentations
 	public abstract class PaneViewModelBase : PerspectiveViewModelBase
 	{
 
-		#region フィールド
+
+		#region Private フィールド
 
 		private bool _IsOpen = true;
 
-		#endregion フィールド
+		#endregion Private フィールド
 
 
-		#region プロパティ
+		#region Public プロパティ
 
 		public bool IsOpen
 		{
@@ -28,6 +29,7 @@ namespace SVPS.Core.Presentations
 			}
 		}
 
-		#endregion プロパティ
+		#endregion Public プロパティ
+
 	}
 }

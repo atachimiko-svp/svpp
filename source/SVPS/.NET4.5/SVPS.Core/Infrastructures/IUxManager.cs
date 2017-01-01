@@ -29,22 +29,25 @@ namespace SVPS.Core.Infrastructures
 
 		#region Public メソッド
 
-		ParspectiveViewModelHandle AddPerspectiveViewModel(PerspectiveViewModelBase pd);
+		PerspectiveViewModelHandle AddPerspectiveViewModel(PerspectiveViewModelBase pd);
 
 		void ChangePerspective(string perspectiveName, object param = null);
 
-		bool SetPerspectiveViewModel(PerspectiveNames perspectiveName, ViewpositionNames position, ParspectiveViewModelHandle handle);
+		PerspectiveViewModelBase GetPerspectiveViewModel(PerspectiveViewModelHandle hpvm);
+
+		bool SetPerspectiveViewModel(PerspectiveNames perspectiveName, ViewpositionNames position, PerspectiveViewModelHandle handle);
 
 		#endregion Public メソッド
+
 	}
 
-	public struct ParspectiveViewModelHandle
+	public struct PerspectiveViewModelHandle
 	{
 
 
 		#region Public コンストラクタ
 
-		public ParspectiveViewModelHandle(int handleId)
+		public PerspectiveViewModelHandle(int handleId)
 		{
 			this.Handle = handleId;
 		}
@@ -62,11 +65,13 @@ namespace SVPS.Core.Infrastructures
 	public class ActiveViewModelEventArgs : EventArgs
 	{
 
+
 		#region Public プロパティ
 
 		public object Param { get; set; }
 		public string PerspectiveName { get; set; }
 
 		#endregion Public プロパティ
+
 	}
 }

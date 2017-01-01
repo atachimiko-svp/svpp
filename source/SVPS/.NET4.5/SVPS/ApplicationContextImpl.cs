@@ -76,11 +76,11 @@ namespace SVPS
 			// アプリケーションが使用するディレクトリ
 			string personalDirectoryPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 #if DEBUG
-			_ApplicationDirectory = new DirectoryInfo(Path.Combine(personalDirectoryPath, @"Sakura_dev"));
+			_ApplicationDirectory = new DirectoryInfo(Path.Combine(personalDirectoryPath, @"SVPS_dev"));
 #else
-			_ApplicationDirectory = new DirectoryInfo(Path.Combine(personalDirectoryPath,@"Sakura"));
+			_ApplicationDirectory = new DirectoryInfo(Path.Combine(personalDirectoryPath,@"SVPS"));
 #endif
-			_ApplicationConfigInfoFile = new FileInfo(Path.Combine(ConfigDirectory.FullName, @"sakura.conf"));
+			_ApplicationConfigInfoFile = new FileInfo(Path.Combine(ConfigDirectory.FullName, @"svps.conf"));
 
 			// アプリケーションが動作するドメイン
 			AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);

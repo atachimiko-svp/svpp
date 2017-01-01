@@ -1,13 +1,303 @@
-﻿<Window
+﻿<Metro:MetroWindow
     x:Class="SVPS.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Fluent="urn:fluent-ribbon"
+    xmlns:Metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:MetroDialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+    xmlns:SVP_Control="clr-namespace:SVPS.Views.Components"
+    xmlns:SVP_Frame="clr-namespace:SVPS.Functions.Views.Frames;assembly=SVPS.Functions.Appearance"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
     xmlns:local="clr-namespace:SVPS.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
-    Width="525"
-    Height="350"
+    Title="SVPP開発"
+    Width="1500"
+    Height="700"
+    Fluent:RibbonProperties.TitleBarHeight="0"
+    MetroDialog:DialogParticipation.Register="{Binding}"
+    ShowIconOnTitleBar="False"
+    ShowTitleBar="True"
+    TitleCaps="False"
+    WindowState="Normal"
     mc:Ignorable="d">
-    <Grid />
-</Window>
+    <Metro:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+
+                <!--<ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Generic.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Office2013/Generic.xaml" />
+                <!--  ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Windows8/Generic.xaml" /  -->
+
+                <ResourceDictionary>
+                    <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+                </ResourceDictionary>
+
+                <ResourceDictionary>
+
+
+                    <!--  ドキュメントに表示するデータテンプレートの定義  -->
+                    <DataTemplate x:Key="ContentPreviewViewModel">
+                        <Grid />
+                    </DataTemplate>
+                    <DataTemplate x:Key="ContentListViewModel">
+                        <Grid />
+                    </DataTemplate>
+                    <DataTemplate x:Key="AttributeControl1PanelViewModel">
+                        <Grid />
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="SampleViewModel">
+                        <Grid>
+                            <SVP_Frame:ReductionViewFrame />
+                        </Grid>
+                    </DataTemplate>
+                    <DataTemplate x:Key="ManualMetaInputSampleViewModel">
+                        <Grid>
+                            <SVP_Control:ManualMetaInputSampleComponent />
+                        </Grid>
+                    </DataTemplate>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Metro:MetroWindow.Resources>
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Fluent:ApplicationMenu Header="File">
+            <Fluent:ApplicationMenu.RightPaneContent>
+                <StackPanel
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Orientation="Vertical">
+
+                    <Border
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="#64647F"
+                        BorderThickness="0,0,0,0">
+
+                        <TextBlock
+                            Padding="12,4,4,4"
+                            Background="#F6F7F8"
+                            FontSize="12"
+                            FontWeight="SemiBold"
+                            Foreground="#64647F"
+                            Text="Recent files"
+                            TextAlignment="Left" />
+                    </Border>
+                </StackPanel>
+            </Fluent:ApplicationMenu.RightPaneContent>
+        </Fluent:ApplicationMenu>
+        <Fluent:Ribbon x:Name="ribbon" AutomaticStateManagement="True">
+            <Fluent:Ribbon.Menu>
+                <Grid>
+                    <!--  Backstage items can be keytipped  -->
+                    <Fluent:Backstage Visibility="{Binding IsChecked, ElementName=UseBackstage, Converter={StaticResource boolToVisibilityConverter}}">
+                        <Fluent:BackstageTabControl>
+                            <Fluent:Button
+                                Header="Save"
+                                Icon="pack://application:,,,/FluentTest;component/Images/Save.png"
+                                KeyTip="S" />
+                        </Fluent:BackstageTabControl>
+                    </Fluent:Backstage>
+                </Grid>
+            </Fluent:Ribbon.Menu>
+            <Fluent:Ribbon.ContextualGroups>
+                <Fluent:RibbonContextualTabGroup
+                    x:Name="tg_ListExplorerContextualMenu"
+                    Background="Green"
+                    BorderBrush="Green"
+                    Header="サンプル拡張メニュー"
+                    Visibility="{Binding ActiveDocument.SampleContextualMenuVisibilityFlag, Converter={StaticResource BoolToVisibilityConverter}}" />
+            </Fluent:Ribbon.ContextualGroups>
+
+            <Fluent:RibbonTabItem
+                x:Name="homeTabItem"
+                Header="開発メニュー"
+                KeyTip="H"
+                ToolTip="Regular Tool Tip">
+                <Fluent:RibbonGroupBox Name="__DebugChange" Header="パースペクティブ切替">
+                    <Fluent:Button
+                        Click="ShowPropertyButton_Click"
+                        Header="一覧"
+                        SizeDefinition="Middle" />
+                    <Fluent:Button
+                        Name="ShowPreviewButton"
+                        Click="ShowPreviewButton_Click"
+                        Header="プレビュー"
+                        SizeDefinition="Middle" />
+                    <Fluent:Button
+                        Name="ShowSeiriButton"
+                        Click="ShowSeiriButton_Click"
+                        Header="整理"
+                        SizeDefinition="Middle" />
+                    <Fluent:Button
+                        Name="ShowTimelineButton"
+                        Click="ShowTimelineButton_Click"
+                        Header="タイムライン"
+                        SizeDefinition="Middle" />
+                </Fluent:RibbonGroupBox>
+
+                <Fluent:RibbonGroupBox Name="__Debug" Header="表示デバッグ">
+                    <Fluent:Button Header="Debug1" SizeDefinition="Middle">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="OpenFlyout" MethodTarget="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Fluent:Button>
+                    <Fluent:Button Header="サーバデータ読込(DUMMY)" SizeDefinition="Middle">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="StartServerDataLoad" MethodTarget="{Binding ActiveDocument}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Fluent:Button>
+                    <Fluent:Button Header="サーバデータ(BMPクリア)" SizeDefinition="Middle">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="ClearBitmapData" MethodTarget="{Binding ActiveDocument}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Fluent:Button>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="ホーム">
+                <Fluent:RibbonGroupBox Name="Ribbon_Home_Navi" Header="ナビ">
+                    <Fluent:Button Header="次へ" SizeDefinition="Large" />
+                    <Fluent:Button Header="前へ" SizeDefinition="Large" />
+                    <Fluent:Button Header="先頭へ" SizeDefinition="Middle" />
+                    <Fluent:Button Header="最後へ" SizeDefinition="Middle" />
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Name="Ribbon_Home_Selecter" Header="選択">
+                    <Fluent:Button Header="全て選択" SizeDefinition="Large" />
+                    <Fluent:Button Header="選択解除" SizeDefinition="Middle" />
+                    <Fluent:Button Header="選択切り替え" SizeDefinition="Middle" />
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Name="Ribbon_Home_Control" Header="操作">
+                    <Fluent:Button Header="カテゴリへ移動" SizeDefinition="Middle" />
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Name="Ribbon_Home_ChangeView" Header="ビュー切替">
+                    <Fluent:Button
+                        Header="コンテント一覧"
+                        SizeDefinition="Large"
+                        ToolTip="サムネイル" />
+                    <Fluent:Button Header="プレビュー" SizeDefinition="Large" />
+                    <Fluent:Button Header="プレビュー(整理)" SizeDefinition="Middle" />
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="共有">
+                <Fluent:RibbonGroupBox Name="Ribbon_Home_Sourcial" Header="ソーシャル">
+                    <Fluent:Button Header="Twitter" SizeDefinition="Large" />
+                    <Fluent:Button Header="Facebook" SizeDefinition="Large" />
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="ツール" />
+            <Fluent:RibbonTabItem Header="表示">
+                <Fluent:RibbonGroupBox Name="Ribbon_Home_Window" Header="ウィンドウ">
+                    <Fluent:Button Header="全画面表示" SizeDefinition="Large" />
+                    <Fluent:Button Header="常に手前に表示" SizeDefinition="Large" />
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+
+            <Fluent:RibbonTabItem
+                x:Name="ctx_ListExplorer_SelectionTabItem"
+                Group="{Binding ElementName=tg_ListExplorerContextualMenu}"
+                Header="選択" />
+
+        </Fluent:Ribbon>
+        <Grid Grid.Row="1">
+            <DockPanel LastChildFill="True">
+                <Grid DockPanel.Dock="Left">
+                    <Grid.Background>
+                        <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Offset="0" Color="#FFFFFFFF" />
+                            <GradientStop Offset="1" Color="#FFDDDADA" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <ContentPresenter
+                        x:Name="contentPresenter_DockLeft"
+                        Content="{Binding DockLeftViewModel}"
+                        ContentTemplate="{Binding Path=DataContext.DockLeft, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                </Grid>
+                <Grid DockPanel.Dock="Right">
+                    <Grid.Background>
+                        <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Offset="0" Color="#FFFFFFFF" />
+                            <GradientStop Offset="1" Color="#FFDDDADA" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <ContentPresenter
+                        x:Name="contentPresenter_DockRight"
+                        Content="{Binding DockRightViewModel}"
+                        ContentTemplate="{Binding Path=DataContext.DockRight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                </Grid>
+                <Grid DockPanel.Dock="Bottom">
+                    <Grid.Background>
+                        <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Offset="0" Color="#FFFFFFFF" />
+                            <GradientStop Offset="1" Color="#FFDDDADA" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <ContentPresenter
+                        x:Name="contentPresenter_DockBottom"
+                        Content="{Binding DockBottomViewModel}"
+                        ContentTemplate="{Binding Path=DataContext.DockBottom, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                </Grid>
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Offset="0" Color="#FFFFFFFF" />
+                            <GradientStop Offset="1" Color="#FFDDDADA" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <ContentPresenter
+                        x:Name="contentPresenter_LL"
+                        Content="{Binding ActiveDocument}"
+                        ContentTemplate="{Binding Path=DataContext.ViewTemplate, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                </Grid>
+            </DockPanel>
+        </Grid>
+        <Fluent:StatusBar
+            Grid.Row="2"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom">
+            <Fluent:StatusBarItem
+                Title="Words Width"
+                HorizontalAlignment="Left"
+                Value="150">
+                <TextBlock Text="150 px" />
+            </Fluent:StatusBarItem>
+            <Separator HorizontalAlignment="Left" />
+            <Fluent:StatusBarItem
+                Title="Selected Words"
+                HorizontalAlignment="Left"
+                Content="15"
+                ToolTip="This is Selected Words"
+                Value="15" />
+            <Separator HorizontalAlignment="Left" />
+            <Fluent:StatusBarItem Title="Zoom" HorizontalAlignment="Right" />
+            <Fluent:StatusBarItem Title="Zoom Slider" HorizontalAlignment="Right">
+                <Slider
+                    x:Name="zoomSlider"
+                    IsDirectionReversed="False"
+                    IsSnapToTickEnabled="True"
+                    LargeChange="0.1"
+                    Maximum="2.0"
+                    Minimum="0.5"
+                    SmallChange="0.1"
+                    Style="{DynamicResource ZoomSliderStyle}"
+                    TickFrequency="0.1" />
+            </Fluent:StatusBarItem>
+        </Fluent:StatusBar>
+    </Grid>
+</Metro:MetroWindow>

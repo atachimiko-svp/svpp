@@ -57,10 +57,10 @@ namespace SVPS.Applus.Manager
 
 		#region Public メソッド
 
-		public ParspectiveViewModelHandle AddPerspectiveViewModel(PerspectiveViewModelBase pd)
+		public PerspectiveViewModelHandle AddPerspectiveViewModel(PerspectiveViewModelBase pd)
 		{
 			_ViewModels.Add(pd);
-			return new ParspectiveViewModelHandle(_ViewModels.Count - 1);
+			return new PerspectiveViewModelHandle(_ViewModels.Count - 1);
 		}
 
 		public void ChangePerspective(string perspectiveName, object param = null)
@@ -118,6 +118,11 @@ namespace SVPS.Applus.Manager
 				});
 		}
 
+		public PerspectiveViewModelBase GetPerspectiveViewModel(PerspectiveViewModelHandle handle)
+		{
+			return _ViewModels[handle.Handle];
+		}
+
 		/// <summary>
 		/// パースペクティブへ表示情報を設定する
 		/// </summary>
@@ -125,7 +130,7 @@ namespace SVPS.Applus.Manager
 		/// <param name="position">表示位置名</param>
 		/// <param name="handle">ビューと表示情報</param>
 		/// <returns></returns>
-		public bool SetPerspectiveViewModel(PerspectiveNames perspectiveName, ViewpositionNames position, ParspectiveViewModelHandle handle)
+		public bool SetPerspectiveViewModel(PerspectiveNames perspectiveName, ViewpositionNames position, PerspectiveViewModelHandle handle)
 		{
 			var pn = Enum.GetName(typeof(PerspectiveNames), perspectiveName);
 			var vpn = Enum.GetName(typeof(ViewpositionNames), position);
@@ -160,11 +165,6 @@ namespace SVPS.Applus.Manager
 					where v.PerspectiveName == perspectiveName
 					select v;
 			return r.FirstOrDefault();
-		}
-
-		PerspectiveViewModelBase GetPerspectiveViewModel(ParspectiveViewModelHandle handle)
-		{
-			return _ViewModels[handle.Handle];
 		}
 
 		#endregion Private メソッド

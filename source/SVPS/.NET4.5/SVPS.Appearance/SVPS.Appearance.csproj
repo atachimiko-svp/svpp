@@ -90,6 +90,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Components\ManualMetaInputSampleComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\PropertyPane.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,6 +105,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\ManualMetaInputSampleComponent.xaml.cs">
+      <DependentUpon>ManualMetaInputSampleComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\PropertyPane.xaml.cs">
+      <DependentUpon>PropertyPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -134,11 +148,14 @@
   <ItemGroup>
     <Folder Include="Actions\" />
     <Folder Include="Behaviors\" />
-    <Folder Include="Components\" />
     <Folder Include="Resources\" />
     <Folder Include="Themes\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Functions\SVPS.Functions.Appearance\SVPS.Functions.Appearance.csproj">
+      <Project>{7b1f806c-3324-4a89-b8e0-90093bdecc3d}</Project>
+      <Name>SVPS.Functions.Appearance</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SVPS.Applus\SVPS.Applus.csproj">
       <Project>{65b8dc50-ec2d-45ff-8709-42fbd949e3ff}</Project>
       <Name>SVPS.Applus</Name>

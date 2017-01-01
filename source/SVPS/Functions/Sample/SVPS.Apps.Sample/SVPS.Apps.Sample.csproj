@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A5CFAC71-F095-4A74-8495-53DB0F4FCCEB}</ProjectGuid>
+    <ProjectGuid>{19ABC4DA-8F87-453F-96F6-43CB324CCAC6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SVPS.Core</RootNamespace>
-    <AssemblyName>SVPS.Core</AssemblyName>
+    <RootNamespace>SVPS.Apps.Sample</RootNamespace>
+    <AssemblyName>SVPS.Apps.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,24 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ImpromptuInterface, Version=6.2.2.0, Culture=neutral, PublicKeyToken=0b1781c923b2975b, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ImpromptuInterface.6.2.2\lib\net40\ImpromptuInterface.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Livet, Version=1.3.0.0, Culture=neutral, PublicKeyToken=b0b1d3f711ef38cb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LivetCask.1.3.1.0\lib\net45\Livet.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="log4net, Version=2.0.6.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\log4net.2.0.6\lib\net45-full\log4net.dll</HintPath>
+      <HintPath>..\..\..\packages\LivetCask.1.3.1.0\lib\net45\Livet.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LivetCask.1.3.1.0\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\LivetCask.1.3.1.0\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -55,7 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LivetCask.1.3.1.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\..\..\packages\LivetCask.1.3.1.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xaml" />
@@ -68,41 +56,36 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationContext.cs" />
-    <Compile Include="Attributes\FunctionBlockAttribute.cs" />
-    <Compile Include="Constractures\AppConfigSetting.cs" />
-    <Compile Include="Criterias\ISearchContent.cs" />
-    <Compile Include="Infrastructures\IApplicationContext.cs" />
-    <Compile Include="Infrastructures\IApplicationManager.cs" />
-    <Compile Include="Infrastructures\IContentLazyItem.cs" />
-    <Compile Include="Infrastructures\IContentRepository.cs" />
-    <Compile Include="Infrastructures\IFunctionBlock.cs" />
-    <Compile Include="Infrastructures\IOnsViewModel.cs" />
-    <Compile Include="Infrastructures\IUxManager.cs" />
-    <Compile Include="Infrastructures\IWorkspaceViewModel.cs" />
-    <Compile Include="Messages\DialogMessage.cs" />
-    <Compile Include="PerspectiveNames.cs" />
-    <Compile Include="Presentations\PaneViewModelBase.cs" />
-    <Compile Include="Presentations\Perspective.cs" />
-    <Compile Include="Presentations\PerspectiveViewModelBase.cs" />
-    <Compile Include="Presentations\SDocumentViewModelBase.cs" />
+    <Compile Include="ManualMetaInputSampleViewModel.cs" />
+    <Compile Include="SampleFunctionBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewpositionNames.cs" />
+    <Compile Include="SampleViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Contribution\Akalib\.NET4.5\Akalib\Akalib.csproj">
+      <Project>{ac9a53e6-25c0-4465-8f91-671de8d9573e}</Project>
+      <Name>Akalib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\.NET4.5\SVPS.Common\SVPS.Common.csproj">
+      <Project>{6c98de4b-8027-420a-862b-3b0c06400836}</Project>
+      <Name>SVPS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\.NET4.5\SVPS.Contrib\SVPS.Contrib.csproj">
+      <Project>{26938d63-c560-4a05-9ce5-121c65997bc9}</Project>
+      <Name>SVPS.Contrib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\.NET4.5\SVPS.Core\SVPS.Core.csproj">
+      <Project>{a5cfac71-f095-4a74-8495-53db0f4fcceb}</Project>
+      <Name>SVPS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\.NET4.5\SVPS.Data\SVPS.Data.csproj">
+      <Project>{946498be-4605-46dc-908f-3ce2c724ec21}</Project>
+      <Name>SVPS.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SVPS.Common\SVPS.Common.csproj">
-      <Project>{6c98de4b-8027-420a-862b-3b0c06400836}</Project>
-      <Name>SVPS.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SVPS.Contrib\SVPS.Contrib.csproj">
-      <Project>{26938d63-c560-4a05-9ce5-121c65997bc9}</Project>
-      <Name>SVPS.Contrib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

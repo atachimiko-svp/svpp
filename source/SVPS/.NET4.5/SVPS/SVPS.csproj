@@ -120,6 +120,14 @@
       <Project>{f67d1d24-f605-4096-93c8-95068d5a0e6e}</Project>
       <Name>SVPC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Functions\Sample\SVPS.Apps.Sample\SVPS.Apps.Sample.csproj">
+      <Project>{19abc4da-8f87-453f-96f6-43cb324ccac6}</Project>
+      <Name>SVPS.Apps.Sample</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Functions\SVPS.Functions.Appearance\SVPS.Functions.Appearance.csproj">
+      <Project>{7b1f806c-3324-4a89-b8e0-90093bdecc3d}</Project>
+      <Name>SVPS.Functions.Appearance</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SVPS.Appearance\SVPS.Appearance.csproj">
       <Project>{d569ed20-ce42-4a9d-a336-ea027b300cd8}</Project>
       <Name>SVPS.Appearance</Name>

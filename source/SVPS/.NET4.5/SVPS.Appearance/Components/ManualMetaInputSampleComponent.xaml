@@ -1,0 +1,37 @@
+﻿<UserControl
+    x:Class="SVPS.Views.Components.ManualMetaInputSampleComponent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SVPS.Views.Components"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <Grid Height="150">
+        <TextBlock>ManualMetaInputSampleViewModelですにゃん</TextBlock>
+        <WrapPanel>
+            <Button Content="Button1" />
+            <Button Content="Button2" />
+            <Button Content="Button3" />
+            <Button Content="Button4" />
+            <Button Content="Button5" />
+            <Button Content="Button6" />
+            <Button Content="Button7" />
+            <Button Content="Button8" />
+            <Button Content="Button9" />
+            <Button Content="Button10" />
+            <Button Content="Button11" />
+            <Button Content="Button12" />
+            <Button Content="Button13" />
+            <Button Content="Button14" />
+            <Button Content="Button15" />
+            <Button Content="Button16" />
+            <Button Content="Button17" />
+            <Button Content="Button18" />
+            <Button Content="Button19" />
+            <Button Content="Button20" />
+            <Button Content="Button21" />
+        </WrapPanel>
+    </Grid>
+</UserControl>

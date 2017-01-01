@@ -16,6 +16,7 @@ namespace SVPS.Data.ViewModels
 	public class WorkspaceViewModel : Livet.ViewModel, IWorkspaceViewModel
 	{
 
+
 		#region Private フィールド
 
 		static ILog LOG = LogManager.GetLogger(typeof(WorkspaceViewModel));
@@ -25,10 +26,10 @@ namespace SVPS.Data.ViewModels
 		/// </summary>
 		SDocumentViewModelBase _ActiveDocument;
 
+		DataTemplate _DataTemplate_DockBottom;
 		DataTemplate _DataTemplate_DockLeft;
 
 		DataTemplate _DataTemplate_DockRight;
-
 		/// <summary>
 		/// Flyout(Button_1)のDataTemplate
 		/// </summary>
@@ -59,10 +60,10 @@ namespace SVPS.Data.ViewModels
 		/// </summary>
 		DataTemplate _DataTemplate_FR2;
 
+		PaneViewModelBase _ViewModel_DockBottom;
 		PaneViewModelBase _ViewModel_DockLeft;
 
 		PaneViewModelBase _ViewModel_DockRight;
-
 		PaneViewModelBase _ViewModel_FB1;
 
 		PaneViewModelBase _ViewModel_FB2;
@@ -102,6 +103,33 @@ namespace SVPS.Data.ViewModels
 			{
 				_ActiveDocument = value;
 				UpdateActiveViewTemplate();
+				RaisePropertyChanged();
+			}
+		}
+
+		public DataTemplate DockBottom
+		{
+			get
+			{
+				return _DataTemplate_DockBottom;
+			}
+			protected set
+			{
+				_DataTemplate_DockBottom = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		public PaneViewModelBase DockBottomViewModel
+		{
+			get
+			{
+				return _ViewModel_DockBottom;
+			}
+			protected set
+			{
+				_ViewModel_DockBottom = value;
+				UpdateDockBottomTemplate();
 				RaisePropertyChanged();
 			}
 		}
@@ -340,6 +368,9 @@ namespace SVPS.Data.ViewModels
 				case "DockRight":
 					this.DockRightViewModel = perspectiveVm as PaneViewModelBase;
 					break;
+				case "DockBottom":
+					this.DockBottomViewModel = perspectiveVm as PaneViewModelBase;
+					break;
 				case "FL1":
 					this.FL1ViewModel = perspectiveVm as PaneViewModelBase;
 					break;
@@ -404,6 +435,19 @@ namespace SVPS.Data.ViewModels
 			}
 		}
 
+		private void UpdateDockBottomTemplate()
+		{
+			if (this.DockBottomViewModel == null)
+			{
+				this.DockBottom = null;
+			}
+			else
+			{
+				var name = this.DockBottomViewModel.GetType().Name;
+				this.DockBottom = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+			}
+		}
+
 		private void UpdateDockLeftTemplate()
 		{
 			if (this.DockLeftViewModel == null)
@@ -429,7 +473,6 @@ namespace SVPS.Data.ViewModels
 				this.DockRight = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
 			}
 		}
-
 		/// <summary>
 		/// 表示するDataTemplateを更新します
 		/// </summary>
