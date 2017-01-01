@@ -12,6 +12,7 @@ namespace SVPS.Core
 		DockLeft,
 		DockRight,
 		DockBottom,
+		DockKeel,
 		FL1,
 		FL2,
 		FR1,

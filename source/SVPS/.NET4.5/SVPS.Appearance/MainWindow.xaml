@@ -60,7 +60,19 @@
                     </DataTemplate>
                     <DataTemplate x:Key="ManualMetaInputSampleViewModel">
                         <Grid>
-                            <SVP_Control:ManualMetaInputSampleComponent />
+                            <SVP_Frame:InputMetaControlFrame />
+                        </Grid>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="LeftDockPanelViewModel">
+                        <Grid>
+                            <SVP_Frame:NavigationListFrame />
+                        </Grid>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="RightDockPanelViewModel">
+                        <Grid>
+                            <SVP_Frame:AutomatinSearchFrame />
                         </Grid>
                     </DataTemplate>
                 </ResourceDictionary>
@@ -216,8 +228,8 @@
 
         </Fluent:Ribbon>
         <Grid Grid.Row="1">
-            <DockPanel LastChildFill="True">
-                <Grid DockPanel.Dock="Left">
+            <DockPanel Name="DockPanel_Keel" LastChildFill="True">
+                <Grid Name="DockGrid_Keel" DockPanel.Dock="Bottom">
                     <Grid.Background>
                         <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Offset="0" Color="#FFFFFFFF" />
@@ -225,46 +237,61 @@
                         </LinearGradientBrush>
                     </Grid.Background>
                     <ContentPresenter
-                        x:Name="contentPresenter_DockLeft"
-                        Content="{Binding DockLeftViewModel}"
-                        ContentTemplate="{Binding Path=DataContext.DockLeft, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                        x:Name="contentPresenter_DockKeel"
+                        Content="{Binding DockKeelViewModel}"
+                        ContentTemplate="{Binding Path=DataContext.DockKeel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
                 </Grid>
-                <Grid DockPanel.Dock="Right">
-                    <Grid.Background>
-                        <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Offset="0" Color="#FFFFFFFF" />
-                            <GradientStop Offset="1" Color="#FFDDDADA" />
-                        </LinearGradientBrush>
-                    </Grid.Background>
-                    <ContentPresenter
-                        x:Name="contentPresenter_DockRight"
-                        Content="{Binding DockRightViewModel}"
-                        ContentTemplate="{Binding Path=DataContext.DockRight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
-                </Grid>
-                <Grid DockPanel.Dock="Bottom">
-                    <Grid.Background>
-                        <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Offset="0" Color="#FFFFFFFF" />
-                            <GradientStop Offset="1" Color="#FFDDDADA" />
-                        </LinearGradientBrush>
-                    </Grid.Background>
-                    <ContentPresenter
-                        x:Name="contentPresenter_DockBottom"
-                        Content="{Binding DockBottomViewModel}"
-                        ContentTemplate="{Binding Path=DataContext.DockBottom, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
-                </Grid>
-                <Grid>
-                    <Grid.Background>
-                        <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Offset="0" Color="#FFFFFFFF" />
-                            <GradientStop Offset="1" Color="#FFDDDADA" />
-                        </LinearGradientBrush>
-                    </Grid.Background>
-                    <ContentPresenter
-                        x:Name="contentPresenter_LL"
-                        Content="{Binding ActiveDocument}"
-                        ContentTemplate="{Binding Path=DataContext.ViewTemplate, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
-                </Grid>
+                <DockPanel LastChildFill="True">
+                    <Grid Name="DockGrid_Left" DockPanel.Dock="Left">
+                        <Grid.Background>
+                            <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Offset="0" Color="#FFFFFFFF" />
+                                <GradientStop Offset="1" Color="#FFDDDADA" />
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <ContentPresenter
+                            x:Name="contentPresenter_DockLeft"
+                            Content="{Binding DockLeftViewModel}"
+                            ContentTemplate="{Binding Path=DataContext.DockLeft, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                    </Grid>
+                    <Grid Name="DockGrid_Right" DockPanel.Dock="Right">
+                        <Grid.Background>
+                            <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Offset="0" Color="#FFFFFFFF" />
+                                <GradientStop Offset="1" Color="#FFDDDADA" />
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <ContentPresenter
+                            x:Name="contentPresenter_DockRight"
+                            Content="{Binding DockRightViewModel}"
+                            ContentTemplate="{Binding Path=DataContext.DockRight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                    </Grid>
+                    <Grid Name="DockGrid_Bottom" DockPanel.Dock="Bottom">
+                        <Grid.Background>
+                            <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Offset="0" Color="#FFFFFFFF" />
+                                <GradientStop Offset="1" Color="#FFDDDADA" />
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <ContentPresenter
+                            x:Name="contentPresenter_DockBottom"
+                            Content="{Binding DockBottomViewModel}"
+                            ContentTemplate="{Binding Path=DataContext.DockBottom, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                    </Grid>
+
+                    <Grid>
+                        <Grid.Background>
+                            <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Offset="0" Color="#FFFFFFFF" />
+                                <GradientStop Offset="1" Color="#FFDDDADA" />
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <ContentPresenter
+                            x:Name="contentPresenter_LL"
+                            Content="{Binding ActiveDocument}"
+                            ContentTemplate="{Binding Path=DataContext.ViewTemplate, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                    </Grid>
+                </DockPanel>
             </DockPanel>
         </Grid>
         <Fluent:StatusBar

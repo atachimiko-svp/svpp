@@ -54,11 +54,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frames\AutomatinSearchFrame.xaml.cs">
+      <DependentUpon>AutomatinSearchFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Frames\CategoriseTreeFrame.xaml.cs">
       <DependentUpon>CategoriseTreeFrame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\ImagePreviewFrame.xaml.cs">
       <DependentUpon>ImagePreviewFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\ImageThumbnailFrame.xaml.cs">
+      <DependentUpon>ImageThumbnailFrame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\InformationCategoryFrame.xaml.cs">
       <DependentUpon>InformationCategoryFrame.xaml</DependentUpon>
@@ -97,11 +103,19 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Frames\AutomatinSearchFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Frames\CategoriseTreeFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Frames\ImagePreviewFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\ImageThumbnailFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

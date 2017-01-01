@@ -27,9 +27,13 @@ namespace SVPS.Data.ViewModels
 		SDocumentViewModelBase _ActiveDocument;
 
 		DataTemplate _DataTemplate_DockBottom;
+
+		DataTemplate _DataTemplate_DockKeel;
+
 		DataTemplate _DataTemplate_DockLeft;
 
 		DataTemplate _DataTemplate_DockRight;
+
 		/// <summary>
 		/// Flyout(Button_1)のDataTemplate
 		/// </summary>
@@ -61,9 +65,11 @@ namespace SVPS.Data.ViewModels
 		DataTemplate _DataTemplate_FR2;
 
 		PaneViewModelBase _ViewModel_DockBottom;
+		PaneViewModelBase _ViewModel_DockKeel;
 		PaneViewModelBase _ViewModel_DockLeft;
 
 		PaneViewModelBase _ViewModel_DockRight;
+
 		PaneViewModelBase _ViewModel_FB1;
 
 		PaneViewModelBase _ViewModel_FB2;
@@ -134,6 +140,32 @@ namespace SVPS.Data.ViewModels
 			}
 		}
 
+		public DataTemplate DockKeel
+		{
+			get
+			{
+				return _DataTemplate_DockKeel;
+			}
+			protected set
+			{
+				_DataTemplate_DockKeel = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		public PaneViewModelBase DockKeelViewModel
+		{
+			get
+			{
+				return _ViewModel_DockKeel;
+			}
+			protected set
+			{
+				_ViewModel_DockKeel = value;
+				UpdateDockKeelTemplate();
+				RaisePropertyChanged();
+			}
+		}
 		public DataTemplate DockLeft
 		{
 			get
@@ -371,6 +403,9 @@ namespace SVPS.Data.ViewModels
 				case "DockBottom":
 					this.DockBottomViewModel = perspectiveVm as PaneViewModelBase;
 					break;
+				case "DockKeel":
+					this.DockKeelViewModel = perspectiveVm as PaneViewModelBase;
+					break;
 				case "FL1":
 					this.FL1ViewModel = perspectiveVm as PaneViewModelBase;
 					break;
@@ -445,6 +480,19 @@ namespace SVPS.Data.ViewModels
 			{
 				var name = this.DockBottomViewModel.GetType().Name;
 				this.DockBottom = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+			}
+		}
+
+		private void UpdateDockKeelTemplate()
+		{
+			if (this.DockKeelViewModel == null)
+			{
+				this.DockKeel = null;
+			}
+			else
+			{
+				var name = this.DockKeelViewModel.GetType().Name;
+				this.DockKeel = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
 			}
 		}
 

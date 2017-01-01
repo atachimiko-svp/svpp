@@ -9,7 +9,36 @@
     d:DesignWidth="300"
     mc:Ignorable="d">
     <!--  FRM-07  -->
-    <Grid>
-        <TextBlock>ナビゲーションリストフレーム</TextBlock>
+    <Grid MinWidth="300" MaxWidth="500">
+        <ListBox Name="NavigationListBox" ItemsSource="{Binding}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="60">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="30*" />
+                            <ColumnDefinition Width="100*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            Text="1" />
+                        <Image
+                            Grid.Column="1"
+                            Source="C:\016_47743597_p7_master1200.jpg"
+                            Stretch="Uniform"
+                            StretchDirection="DownOnly" />
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25*" />
+                                <RowDefinition Height="25*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="{Binding Title}" />
+                            <TextBlock Grid.Row="1" Text="{Binding Caption}" />
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

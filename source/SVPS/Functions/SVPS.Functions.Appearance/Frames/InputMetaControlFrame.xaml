@@ -9,7 +9,406 @@
     d:DesignWidth="300"
     mc:Ignorable="d">
     <!--  FRM-08  -->
+
     <Grid>
-        <TextBlock>メタ情報入力フレーム</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="2">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Grid Name="MultipurposeButtonGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="130" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="2,3"
+                        Content="A   0-0" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="2,3"
+                        Content="B   0-1" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="2,3"
+                        Content="B   0-2" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Margin="2,3"
+                        Content="B   0-3" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        Margin="2,3"
+                        Content="B   0-4" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        Margin="2,3"
+                        Content="B   0-5" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="6"
+                        Margin="2,3"
+                        Content="B   0-6" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="7"
+                        Margin="2,3"
+                        Content="B   0-7" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="8"
+                        Margin="2,3"
+                        Content="B   0-8" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="9"
+                        Margin="2,3"
+                        Content="B   0-9" />
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="2,3"
+                        Content="あいうえおかきくけこさしすせそ" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="2,3"
+                        Content="B   1-1" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="2,3"
+                        Content="B   1-2" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="2,3"
+                        Content="B   1-3" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Margin="2,3"
+                        Content="B   1-4" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        Margin="2,3"
+                        Content="B   1-5" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="6"
+                        Margin="2,3"
+                        Content="B   1-6" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="7"
+                        Margin="2,3"
+                        Content="B   1-7" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="8"
+                        Margin="2,3"
+                        Content="B   1-8" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="9"
+                        Margin="2,3"
+                        Content="B   1-9" />
+
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="2,3"
+                        Content="A   2-0" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="2,3"
+                        Content="B   2-1" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Margin="2,3"
+                        Content="B   2-2" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Margin="2,3"
+                        Content="B   2-3" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        Margin="2,3"
+                        Content="B   2-4" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="5"
+                        Margin="2,3"
+                        Content="B   2-5" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="6"
+                        Margin="2,3"
+                        Content="B   2-6" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="7"
+                        Margin="2,3"
+                        Content="B   2-7" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="8"
+                        Margin="2,3"
+                        Content="B   2-8" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="9"
+                        Margin="2,3"
+                        Content="B   2-9" />
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="2,3"
+                        Content="A   3-0" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="2,3"
+                        Content="B   3-1" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Margin="2,3"
+                        Content="B   3-2" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Margin="2,3"
+                        Content="B   3-3" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="4"
+                        Margin="2,3"
+                        Content="B   3-4" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="5"
+                        Margin="2,3"
+                        Content="B   3-5" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="6"
+                        Margin="2,3"
+                        Content="B   3-6" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="7"
+                        Margin="2,3"
+                        Content="B   3-7" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="8"
+                        Margin="2,3"
+                        Content="B   3-8" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="9"
+                        Margin="2,3"
+                        Content="B   3-9" />
+
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Margin="2,3"
+                        Content="A   3-0" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="2,3"
+                        Content="B   3-1" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Margin="2,3"
+                        Content="B   3-2" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="3"
+                        Margin="2,3"
+                        Content="B   3-3" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="4"
+                        Margin="2,3"
+                        Content="B   3-4" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="5"
+                        Margin="2,3"
+                        Content="B   3-5" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="6"
+                        Margin="2,3"
+                        Content="B   3-6" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="7"
+                        Margin="2,3"
+                        Content="B   3-7" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="8"
+                        Margin="2,3"
+                        Content="B   3-8" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="9"
+                        Margin="2,3"
+                        Content="B   3-9" />
+
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Margin="2,3"
+                        Content="A   3-0" />
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Margin="2,3"
+                        Content="B   3-1" />
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        Margin="2,3"
+                        Content="B   3-2" />
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="3"
+                        Margin="2,3"
+                        Content="B   3-3" />
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="4"
+                        Margin="2,3"
+                        Content="B   3-4" />
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="5"
+                        Margin="2,3"
+                        Content="B   3-5" />
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="6"
+                        Margin="2,3"
+                        Content="B   3-6" />
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="7"
+                        Margin="2,3"
+                        Content="B   3-7" />
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="8"
+                        Margin="2,3"
+                        Content="B   3-8" />
+                    <Button
+                        Grid.Row="5"
+                        Grid.Column="9"
+                        Margin="2,3"
+                        Content="B   3-9" />
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+        <Grid
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="2">
+            <ListBox>
+                <TextBlock Text="Item1" />
+                <TextBlock Text="Item2" />
+                <TextBlock Text="Item3" />
+            </ListBox>
+        </Grid>
+        <Grid
+            Grid.Row="0"
+            Grid.Column="2"
+            Margin="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="30" />
+                    <RowDefinition MinHeight="30" />
+                    <RowDefinition MinHeight="30" />
+                    <RowDefinition MinHeight="30" />
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Content="先頭" />
+                <Button Grid.Row="1" Content="上" />
+                <Button Grid.Row="2" Content="下" />
+                <Button Grid.Row="3" Content="最後" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300*" />
+            </Grid.ColumnDefinitions>
+            <Grid Margin="0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="110" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="前ページ" />
+                <TextBlock Grid.Column="1" VerticalAlignment="Center">
+                    1 / 1
+                </TextBlock>
+                <Button Grid.Column="2" Content="次ページ" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*" />
+                <ColumnDefinition Width="60*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="戻る" />
+            <Button Grid.Column="1" Content="次に進む" />
+        </Grid>
     </Grid>
 </UserControl>

@@ -15,24 +15,14 @@ using System.Windows.Shapes;
 
 namespace SVPS.Functions.Views.Frames
 {
-	public class Person
-	{
-		public string Title { get; set; }
-		public string Caption { get; set; }
-	}
-
 	/// <summary>
-	/// NavigationListFrame.xaml の相互作用ロジック
+	/// AutomatinSearchFrame.xaml の相互作用ロジック
 	/// </summary>
-	public partial class NavigationListFrame : UserControl
+	public partial class AutomatinSearchFrame : UserControl
 	{
-		public NavigationListFrame()
+		public AutomatinSearchFrame()
 		{
 			InitializeComponent();
-
-			var people = from age in Enumerable.Range(10, 10)
-						 select new Person { Title = "タイトル" + age, Caption = "キャプション" + age };
-			this.DataContext = people;
 		}
 	}
 }

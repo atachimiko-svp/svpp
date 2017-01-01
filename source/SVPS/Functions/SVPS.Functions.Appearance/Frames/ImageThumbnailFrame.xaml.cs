@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SVPS.Views.Components
+namespace SVPS.Functions.Views.Frames
 {
 	/// <summary>
-	/// ManualMetaInputSampleComponent.xaml の相互作用ロジック
+	/// ImageThumbnailFrame.xaml の相互作用ロジック
 	/// </summary>
-	public partial class ManualMetaInputSampleComponent : UserControl
+	public partial class ImageThumbnailFrame : UserControl
 	{
-		public ManualMetaInputSampleComponent()
+		public ImageThumbnailFrame()
 		{
 			InitializeComponent();
 		}
