@@ -74,9 +74,6 @@
     <Compile Include="ViewModels\CategoryTreeExplorerViewModel.cs" />
     <Compile Include="ViewModels\ContentListViewModel.cs" />
     <Compile Include="ViewModels\ContentPreviewViewModel.cs" />
-    <Compile Include="ViewModels\MDFMainViewModel.cs" />
-    <Compile Include="ViewModels\MDFSubViewModel.cs" />
-    <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
