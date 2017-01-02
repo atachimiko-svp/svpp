@@ -8,16 +8,66 @@
     d:DesignHeight="300"
     d:DesignWidth="300"
     mc:Ignorable="d">
-    <Grid>
+    <Grid Width="300">
         <Grid.Background>
             <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Offset="0" Color="#FFFFFFFF" />
                 <GradientStop Offset="1" Color="#FFDDDADA" />
             </LinearGradientBrush>
         </Grid.Background>
-        <ContentPresenter
-            x:Name="contentPresenter_LL"
-            Content="{Binding Path=ActiveContent}"
-            ContentTemplate="{Binding Path=DataContext.ViewTemplate, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" />
+        <ScrollViewer HorizontalScrollBarVisibility="Visible">
+            <TreeView ItemsSource="{Binding PropertyData.Items}" Style="{x:Null}">
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="BorderBrush" Value="#FF7DA2CE" />
+                                <Setter Property="Background" Value="#FFD35920" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+                <TreeView.ItemTemplate>
+                    <DataTemplate>
+                        <TreeViewItem ItemContainerStyle="{x:Null}" ItemsSource="{Binding Children}">
+                            <TreeViewItem.Header>
+                                <Grid MinWidth="200">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding DataName}" />
+                                </Grid>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="-30,0,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="100*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            Margin="10,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Name}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Margin="10,0,10,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Value}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </TreeViewItem.ItemTemplate>
+                        </TreeViewItem>
+                    </DataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </ScrollViewer>
     </Grid>
 </UserControl>

@@ -87,6 +87,7 @@
     <Compile Include="Presentations\PerspectiveViewModelBase.cs" />
     <Compile Include="Presentations\SDocumentViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyDataSource.cs" />
     <Compile Include="ViewpositionNames.cs" />
   </ItemGroup>
   <ItemGroup>

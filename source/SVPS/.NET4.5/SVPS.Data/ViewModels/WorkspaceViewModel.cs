@@ -29,9 +29,8 @@ namespace SVPS.Data.ViewModels
 		DataTemplate _DataTemplate_DockBottom;
 
 		DataTemplate _DataTemplate_DockKeel;
-
 		DataTemplate _DataTemplate_DockLeft;
-
+		DataTemplate _DataTemplate_DockRBulge;
 		DataTemplate _DataTemplate_DockRight;
 
 		/// <summary>
@@ -67,7 +66,7 @@ namespace SVPS.Data.ViewModels
 		PaneViewModelBase _ViewModel_DockBottom;
 		PaneViewModelBase _ViewModel_DockKeel;
 		PaneViewModelBase _ViewModel_DockLeft;
-
+		SDocumentViewModelBase _ViewModel_DockRBulge;
 		PaneViewModelBase _ViewModel_DockRight;
 
 		PaneViewModelBase _ViewModel_FB1;
@@ -166,6 +165,7 @@ namespace SVPS.Data.ViewModels
 				RaisePropertyChanged();
 			}
 		}
+
 		public DataTemplate DockLeft
 		{
 			get
@@ -193,6 +193,32 @@ namespace SVPS.Data.ViewModels
 			}
 		}
 
+		public DataTemplate DockRBulge
+		{
+			get
+			{
+				return _DataTemplate_DockRBulge;
+			}
+			protected set
+			{
+				_DataTemplate_DockRBulge = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		public SDocumentViewModelBase DockRBulgeViewModel
+		{
+			get
+			{
+				return _ViewModel_DockRBulge;
+			}
+			protected set
+			{
+				_ViewModel_DockRBulge = value;
+				UpdateDockRBulgeTemplate();
+				RaisePropertyChanged();
+			}
+		}
 		public DataTemplate DockRight
 		{
 			get
@@ -393,6 +419,7 @@ namespace SVPS.Data.ViewModels
 			{
 				case "Document":
 					this.ActiveDocument = (SDocumentViewModelBase)perspectiveVm;
+					this.DockRBulgeViewModel = perspectiveVm as SDocumentViewModelBase;
 					break;
 				case "DockLeft":
 					this.DockLeftViewModel = perspectiveVm as PaneViewModelBase;
@@ -483,6 +510,7 @@ namespace SVPS.Data.ViewModels
 			}
 		}
 
+
 		private void UpdateDockKeelTemplate()
 		{
 			if (this.DockKeelViewModel == null)
@@ -506,6 +534,20 @@ namespace SVPS.Data.ViewModels
 			{
 				var name = this.DockLeftViewModel.GetType().Name;
 				this.DockLeft = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+			}
+		}
+
+		private void UpdateDockRBulgeTemplate()
+		{
+			if (this.DockRBulgeViewModel == null)
+			{
+				this.DockRBulge = null;
+			}
+			else
+			{
+				var name = this.DockRBulgeViewModel.GetType().Name;
+				name = "PropertyPaneFrame";
+				this.DockRBulge = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
 			}
 		}
 

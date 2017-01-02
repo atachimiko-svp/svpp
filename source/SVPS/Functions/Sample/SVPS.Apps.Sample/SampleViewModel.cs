@@ -11,7 +11,28 @@ namespace SVPS.Apps.Sample
 	[FunctionBlock]
 	public class SampleViewModel : SDocumentViewModelBase
 	{
+
+		#region Private フィールド
+
 		private bool m_SampleContextualMenuVisibilityFlag;
+
+		#endregion Private フィールド
+
+
+		#region Public コンストラクタ
+
+		public SampleViewModel()
+		{
+			var pd = this.PropertyData.AddPropertyDataSet("プロジェクトカーズ");
+			pd.AddProperty("OS", "Windows 10");
+			pd.AddProperty("CPU", "Core i5");
+			pd.AddProperty("メモリー", "1.5G以上");
+		}
+
+		#endregion Public コンストラクタ
+
+
+		#region Public プロパティ
 
 		public bool SampleContextualMenuVisibilityFlag
 		{
@@ -23,6 +44,11 @@ namespace SVPS.Apps.Sample
 			}
 		}
 
+		#endregion Public プロパティ
+
+
+		#region Public メソッド
+
 		public override void OnActiveViewModel(string perspectiveName, object param)
 		{
 			SampleContextualMenuVisibilityFlag = true;
@@ -30,7 +56,9 @@ namespace SVPS.Apps.Sample
 
 		public override void OnDeActiveViewModel(string perspectiveName)
 		{
-			
+
 		}
+
+		#endregion Public メソッド
 	}
 }

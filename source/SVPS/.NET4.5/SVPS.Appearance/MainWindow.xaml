@@ -41,6 +41,11 @@
 
                 <ResourceDictionary>
 
+                    <DataTemplate x:Key="PropertyPaneFrame">
+                        <Grid>
+                            <SVP_Control:PropertyPane />
+                        </Grid>
+                    </DataTemplate>
 
                     <!--  ドキュメントに表示するデータテンプレートの定義  -->
                     <DataTemplate x:Key="ContentPreviewViewModel">
@@ -229,6 +234,18 @@
         </Fluent:Ribbon>
         <Grid Grid.Row="1">
             <DockPanel Name="DockPanel_Keel" LastChildFill="True">
+                <Grid Name="DockGrid_RBulge" DockPanel.Dock="Right">
+                    <Grid.Background>
+                        <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Offset="0" Color="#FFFFFFFF" />
+                            <GradientStop Offset="1" Color="#FFDDDADA" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <ContentPresenter
+                        x:Name="contentPresenter_DockRBulge"
+                        Content="{Binding DockRBulgeViewModel}"
+                        ContentTemplate="{Binding Path=DataContext.DockRBulge, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Metro:MetroWindow}}" />
+                </Grid>
                 <Grid Name="DockGrid_Keel" DockPanel.Dock="Bottom">
                     <Grid.Background>
                         <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
