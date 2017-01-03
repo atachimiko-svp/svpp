@@ -120,9 +120,21 @@
       <Project>{f67d1d24-f605-4096-93c8-95068d5a0e6e}</Project>
       <Name>SVPC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Functions\Sample\SVPS.Apps.Sample\SVPS.Apps.Sample.csproj">
+    <ProjectReference Include="..\..\Functions\Apps\SVPS.Apps.Ctm\SVPS.Apps.Ctm.csproj">
+      <Project>{3ab44a98-5983-451b-a8d3-9e2679bbec62}</Project>
+      <Name>SVPS.Apps.Ctm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Functions\Apps\SVPS.Apps.Recommend\SVPS.Apps.Recommend.csproj">
+      <Project>{0b967ddb-0c42-4232-89a7-97ba5e62c627}</Project>
+      <Name>SVPS.Apps.Recommend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Functions\Apps\SVPS.Apps.Sample\SVPS.Apps.Sample.csproj">
       <Project>{19abc4da-8f87-453f-96f6-43cb324ccac6}</Project>
       <Name>SVPS.Apps.Sample</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Functions\Apps\SVPS.Apps.Vfs\SVPS.Apps.Vfs.csproj">
+      <Project>{165a86ec-4879-4bc7-ab4b-dd1568095ca4}</Project>
+      <Name>SVPS.Apps.Vfs</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Functions\SVPS.Functions.Appearance\SVPS.Functions.Appearance.csproj">
       <Project>{7b1f806c-3324-4a89-b8e0-90093bdecc3d}</Project>
