@@ -87,6 +87,10 @@
       <Project>{165a86ec-4879-4bc7-ab4b-dd1568095ca4}</Project>
       <Name>SVPS.Apps.Vfs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Functions\SVPS.Apps.Common\SVPS.Apps.Common.csproj">
+      <Project>{01f5ee07-b882-410c-afc6-6a4556c40b2b}</Project>
+      <Name>SVPS.Apps.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SVPS.Common\SVPS.Common.csproj">
       <Project>{6c98de4b-8027-420a-862b-3b0c06400836}</Project>
       <Name>SVPS.Common</Name>

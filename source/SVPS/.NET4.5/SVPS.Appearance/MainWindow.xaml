@@ -48,30 +48,38 @@
                     </DataTemplate>
 
                     <!--  ドキュメントに表示するデータテンプレートの定義  -->
-                    <DataTemplate x:Key="ContentPreviewViewModel">
-                        <Grid />
+                    <DataTemplate x:Key="ImagePreviewDocument">
+                        <SVP_Frame:ImagePreviewFrame />
                     </DataTemplate>
-                    <DataTemplate x:Key="ContentListViewModel">
-                        <Grid />
+                    <DataTemplate x:Key="ArtifactListDocument">
+                        <Grid>
+                            <SVP_Frame:ReductionViewFrame />
+                        </Grid>
                     </DataTemplate>
                     <DataTemplate x:Key="AttributeControl1PanelViewModel">
                         <Grid />
                     </DataTemplate>
 
-                    <DataTemplate x:Key="SampleViewModel">
+                    <DataTemplate x:Key="ContentThumbnailDocument">
                         <Grid>
-                            <SVP_Frame:ReductionViewFrame />
+                            <SVP_Frame:ImageThumbnailFrame />
                         </Grid>
                     </DataTemplate>
-                    <DataTemplate x:Key="ManualMetaInputSampleViewModel">
+                    <DataTemplate x:Key="InputMenuControlPane">
                         <Grid>
                             <SVP_Frame:InputMetaControlFrame />
                         </Grid>
                     </DataTemplate>
 
-                    <DataTemplate x:Key="LeftDockPanelViewModel">
+                    <DataTemplate x:Key="NavigationListPane">
                         <Grid>
                             <SVP_Frame:NavigationListFrame />
+                        </Grid>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="CategoryAlbumInfoPane">
+                        <Grid>
+                            <SVP_Frame:CategoryAlbumInfoFrame />
                         </Grid>
                     </DataTemplate>
 
@@ -135,6 +143,18 @@
                     BorderBrush="Green"
                     Header="サンプル拡張メニュー"
                     Visibility="{Binding ActiveDocument.SampleContextualMenuVisibilityFlag, Converter={StaticResource BoolToVisibilityConverter}}" />
+                <Fluent:RibbonContextualTabGroup
+                    x:Name="tg_ReducationViewContextualMenu"
+                    Background="Green"
+                    BorderBrush="Green"
+                    Header="アイテム一覧画面メニュー"
+                    Visibility="{Binding ActiveDocument.ReducationViewExtRibbonMenuVisibleFlag, Converter={StaticResource BoolToVisibilityConverter}}" />
+                <Fluent:RibbonContextualTabGroup
+                    x:Name="tg_InputMetaViewContextualMenu"
+                    Background="Green"
+                    BorderBrush="Green"
+                    Header="ア"
+                    Visibility="{Binding ActiveDocument.InputMetaViewExtRibbonMenuVisibleFlag, Converter={StaticResource BoolToVisibilityConverter}}" />
             </Fluent:Ribbon.ContextualGroups>
 
             <Fluent:RibbonTabItem
@@ -165,10 +185,10 @@
                 </Fluent:RibbonGroupBox>
 
                 <Fluent:RibbonGroupBox Name="__Debug" Header="表示デバッグ">
-                    <Fluent:Button Header="Debug1" SizeDefinition="Middle">
+                    <Fluent:Button Header="ChangeListViewStyle" SizeDefinition="Middle">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <l:LivetCallMethodAction MethodName="OpenFlyout" MethodTarget="{Binding}" />
+                                <l:LivetCallMethodAction MethodName="ChangeListViewStyle" MethodTarget="{Binding ActiveDocument}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Fluent:Button>
@@ -231,10 +251,62 @@
                 Group="{Binding ElementName=tg_ListExplorerContextualMenu}"
                 Header="選択" />
 
+            <Fluent:RibbonTabItem
+                x:Name="ctx_ReducationView_Display"
+                Group="{Binding ElementName=tg_ReducationViewContextualMenu}"
+                Header="リスト">
+                <Fluent:RibbonGroupBox Header="表示形式">
+                    <Fluent:Button Header="リスト">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="ChangeListViewStyle" MethodTarget="{Binding ActiveDocument}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Fluent:Button>
+                    <Fluent:Button Header="アイコン">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="ChangeIconViewStyle" MethodTarget="{Binding ActiveDocument}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Fluent:Button>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+
+            <Fluent:RibbonTabItem
+                x:Name="ctx_InputMetaView_InputPanelMode"
+                Group="{Binding ElementName=tg_InputMetaViewContextualMenu}"
+                Header="整理">
+                <Fluent:RibbonGroupBox Header="ペイン">
+                    <Fluent:Button Header="アルバム情報表示" SizeDefinition="Middle">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="ToggleCategoryAlubumVisibility" MethodTarget="{Binding ActiveDocument}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Fluent:Button>
+                    <Fluent:Button Header="ナビ表示" SizeDefinition="Middle">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="ToggleNavigationListVisibility" MethodTarget="{Binding ActiveDocument}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Fluent:Button>
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="入力モード">
+                    <Fluent:Button Header="タグ入力" />
+                    <Fluent:Button Header="タグボタン編集" />
+                    <Fluent:Button Header="タグセット履歴" />
+                </Fluent:RibbonGroupBox>
+
+            </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <Grid Grid.Row="1">
             <DockPanel Name="DockPanel_Keel" LastChildFill="True">
-                <Grid Name="DockGrid_RBulge" DockPanel.Dock="Right">
+                <Grid
+                    Name="DockGrid_RBulge"
+                    DockPanel.Dock="Right"
+                    Visibility="{Binding DockRBulgeViewModel.RBulgeVisibilityFlag, Converter={StaticResource BoolToVisibilityConverter}}">
                     <Grid.Background>
                         <LinearGradientBrush ColorInterpolationMode="SRgbLinearInterpolation" SpreadMethod="Pad" StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Offset="0" Color="#FFFFFFFF" />

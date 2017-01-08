@@ -84,6 +84,10 @@
       <Project>{946498be-4605-46dc-908f-3ce2c724ec21}</Project>
       <Name>SVPS.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\SVPS.Apps.Common\SVPS.Apps.Common.csproj">
+      <Project>{01f5ee07-b882-410c-afc6-6a4556c40b2b}</Project>
+      <Name>SVPS.Apps.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

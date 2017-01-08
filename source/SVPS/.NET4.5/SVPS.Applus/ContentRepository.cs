@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Livet;
-using SVPS.Applus.DataSource;
+using SVPS.DataSource;
 using System.Net;
 using log4net;
 using System.Net.Sockets;
@@ -179,6 +179,20 @@ namespace SVPS.Applus
 			{
 				var args = new ChangeSelectedItemEventArgs { OldItem = old, NewItem = newItem };
 				ChangeSelectedItem(this, args);
+			}
+		}
+
+		public async Task ExecFindByCategory()
+		{
+			await Task.Delay(1000);
+			this._DataSource.Items.Clear();
+
+			for(int i = 0; i < 100; i++)
+			{
+				this._DataSource.AddItem(new ImageLazyItem(i)
+				{
+					Title = "サンプルデータ " + i
+				});
 			}
 		}
 

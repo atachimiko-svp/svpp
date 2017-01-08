@@ -9,12 +9,14 @@ namespace SVPS.Core.Presentations
 	public abstract class SDocumentViewModelBase : PerspectiveViewModelBase
 	{
 
+
 		#region Private フィールド
 
 		readonly PropertyDataSource m_PropertyData;
 
-		#endregion Private フィールド
+		bool m_RBulgeVisibilityFlag = false;
 
+		#endregion Private フィールド
 
 
 		#region Public コンストラクタ
@@ -31,6 +33,17 @@ namespace SVPS.Core.Presentations
 		#region Public プロパティ
 
 		public PropertyDataSource PropertyData { get { return m_PropertyData; } }
+
+		public bool RBulgeVisibilityFlag
+		{
+			get { return m_RBulgeVisibilityFlag; }
+			set
+			{
+				if (m_RBulgeVisibilityFlag == value) return;
+				m_RBulgeVisibilityFlag = value;
+				RaisePropertyChanged();
+			}
+		}
 
 		#endregion Public プロパティ
 	}

@@ -30,17 +30,7 @@ namespace SVPS.Applus.Manager
 
 		public UxManager()
 		{
-			var hdoc1 = AddPerspectiveViewModel(new ContentListViewModel());
-			var hdoc2 = AddPerspectiveViewModel(new ContentPreviewViewModel());
-			var hdock1 = AddPerspectiveViewModel(new AttributeControl1PanelViewModel());
 
-			// パースペクティブ初期化
-			// 非表示にするものは、明示的にNULLを設定します。
-			SetPerspectiveViewModel(PerspectiveNames.ContentList_Thumbnail, ViewpositionNames.Document, hdoc1);
-			SetPerspectiveViewModel(PerspectiveNames.ContentList_Thumbnail, ViewpositionNames.DockLeft, hdock1);
-
-			SetPerspectiveViewModel(PerspectiveNames.Preview, ViewpositionNames.Document, hdoc2);
-			SetPerspectiveViewModel(PerspectiveNames.Preview, ViewpositionNames.DockLeft, hdock1);
 		}
 
 		#endregion Public コンストラクタ
@@ -130,9 +120,9 @@ namespace SVPS.Applus.Manager
 		/// <param name="position">表示位置名</param>
 		/// <param name="handle">ビューと表示情報</param>
 		/// <returns></returns>
-		public bool SetPerspectiveViewModel(PerspectiveNames perspectiveName, ViewpositionNames position, PerspectiveViewModelHandle handle)
+		public bool SetPerspectiveViewModel(string perspectiveName, ViewpositionNames position, PerspectiveViewModelHandle handle)
 		{
-			var pn = Enum.GetName(typeof(PerspectiveNames), perspectiveName);
+			var pn = perspectiveName;
 			var vpn = Enum.GetName(typeof(ViewpositionNames), position);
 
 			var r = from u in _PerspectiveList

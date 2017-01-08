@@ -1,4 +1,5 @@
-﻿using SVPS.Core;
+﻿using SVPS.Apps.Common;
+using SVPS.Core;
 using SVPS.Core.Infrastructures;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace SVPS.Apps.Sample
 		#region Private フィールド
 
 		PerspectiveViewModelHandle m_hpSampleViewModel;
-		PerspectiveViewModelHandle m_hpManualMetaInputSampleViewModel;
+		
 		PerspectiveViewModelHandle m_LeftDockPanelViewModel;
 		PerspectiveViewModelHandle m_RightDockPanelViewModel;
 
@@ -29,32 +30,38 @@ namespace SVPS.Apps.Sample
 		public void OnInitializeFunction(object sender, EventArgs args)
 		{
 			m_hpSampleViewModel = ApplicationContext.Ux.AddPerspectiveViewModel(new SampleViewModel());
-			m_hpManualMetaInputSampleViewModel = ApplicationContext.Ux.AddPerspectiveViewModel(new ManualMetaInputSampleViewModel());
+
+			// ViewModelは、UXで管理しアプリケーションドメインではハンドルを操作する
+			// アプリケーションドメインではハンドルをグローバル変数で管理する。
+			if (!AppPerspectiveHolder.InputMetaControlViewModelHandle.HasValue)
+				AppPerspectiveHolder.InputMetaControlViewModelHandle = ApplicationContext.Ux.AddPerspectiveViewModel(new ManualMetaInputSampleViewModel());
+
+			// 下記の2つは、デバッグ用のViewModelで、後で削除するのでAppPerspectiveHolderで管理しない。
 			m_LeftDockPanelViewModel = ApplicationContext.Ux.AddPerspectiveViewModel(new LeftDockPanelViewModel());
 			m_RightDockPanelViewModel = ApplicationContext.Ux.AddPerspectiveViewModel(new RightDockPanelViewModel());
 
 			ApplicationContext.Ux.SetPerspectiveViewModel(
-				Core.PerspectiveNames.ContentList_Thumbnail,
+				PerspectiveNames.ContentList_Thumbnail.ToString(),
 				Core.ViewpositionNames.Document,
 				m_hpSampleViewModel);
 
 			ApplicationContext.Ux.SetPerspectiveViewModel(
-				Core.PerspectiveNames.Seiri,
+				PerspectiveNames.Seiri.ToString(),
 				Core.ViewpositionNames.Document,
 				m_hpSampleViewModel);
 
 			ApplicationContext.Ux.SetPerspectiveViewModel(
-				Core.PerspectiveNames.Seiri,
+				PerspectiveNames.Seiri.ToString(),
 				Core.ViewpositionNames.DockKeel,
-				m_hpManualMetaInputSampleViewModel);
+				AppPerspectiveHolder.InputMetaControlViewModelHandle.Value);
 
 			ApplicationContext.Ux.SetPerspectiveViewModel(
-				Core.PerspectiveNames.Seiri,
+				PerspectiveNames.Seiri.ToString(),
 				Core.ViewpositionNames.DockLeft,
 				m_LeftDockPanelViewModel);
 
 			ApplicationContext.Ux.SetPerspectiveViewModel(
-				Core.PerspectiveNames.Seiri,
+				PerspectiveNames.Seiri.ToString(),
 				Core.ViewpositionNames.DockRight,
 				m_RightDockPanelViewModel);
 		}

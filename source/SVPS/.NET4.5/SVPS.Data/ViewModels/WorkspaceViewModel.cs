@@ -9,6 +9,8 @@ using SVPS.Core.Presentations;
 using SVPS.Core;
 using System.Windows;
 using SVPS.Core.Messages;
+using Akalib;
+using SVPS.Core.Attributes;
 
 namespace SVPS.Data.ViewModels
 {
@@ -460,26 +462,9 @@ namespace SVPS.Data.ViewModels
 				this.FL1ViewModel.IsOpen = true;
 		}
 
-		public void Perspective1()
-		{
-			StartPerspective(PerspectiveNames.ContentList_Thumbnail);
-		}
-
-		public void Perspective2()
-		{
-			StartPerspective(PerspectiveNames.Preview);
-		}
-
 		#endregion Public メソッド
 
-
 		#region Private メソッド
-
-		void StartPerspective(PerspectiveNames perspectiveName)
-		{
-			var textName = Enum.GetName(typeof(PerspectiveNames), perspectiveName);
-			ApplicationContext.Ux.ChangePerspective(textName);
-		}
 
 		/// <summary>
 		/// 表示するDataTemplateを更新します
@@ -492,8 +477,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.ActiveDocument.GetType().Name;
-				this.ViewTemplate = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.ActiveDocument.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.ActiveDocument.GetType().Name;
+				this.ViewTemplate = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 
@@ -505,8 +493,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.DockBottomViewModel.GetType().Name;
-				this.DockBottom = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.DockBottomViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.DockBottomViewModel.GetType().Name;
+				this.DockBottom = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 
@@ -519,8 +510,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.DockKeelViewModel.GetType().Name;
-				this.DockKeel = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.DockKeelViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.DockKeelViewModel.GetType().Name;
+				this.DockKeel = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 
@@ -532,8 +526,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.DockLeftViewModel.GetType().Name;
-				this.DockLeft = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.DockLeftViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.DockLeftViewModel.GetType().Name;
+				this.DockLeft = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 
@@ -545,8 +542,8 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.DockRBulgeViewModel.GetType().Name;
-				name = "PropertyPaneFrame";
+				// プロパティ表示に使用するDataTemplateは固定。
+				string name = "PropertyPaneFrame";
 				this.DockRBulge = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
 			}
 		}
@@ -559,8 +556,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.DockRightViewModel.GetType().Name;
-				this.DockRight = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.DockRightViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.DockRightViewModel.GetType().Name;
+				this.DockRight = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 		/// <summary>
@@ -574,8 +574,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.FB1ViewModel.GetType().Name;
-				this.FB1 = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.FB1ViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.FB1ViewModel.GetType().Name;
+				this.FB1 = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 
@@ -590,8 +593,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.FB2ViewModel.GetType().Name;
-				this.FB2 = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.FB2ViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.FB2ViewModel.GetType().Name;
+				this.FB2 = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 
@@ -606,8 +612,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.FL1ViewModel.GetType().Name;
-				this.FL1 = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.FL1ViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.FL1ViewModel.GetType().Name;
+				this.FL1 = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 
@@ -622,8 +631,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.FL2ViewModel.GetType().Name;
-				this.FL2 = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.FL2ViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.FL2ViewModel.GetType().Name;
+				this.FL2 = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 
@@ -638,8 +650,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.FR1ViewModel.GetType().Name;
-				this.FR1 = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.FR1ViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.FR1ViewModel.GetType().Name;
+				this.FR1 = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 
@@ -654,8 +669,11 @@ namespace SVPS.Data.ViewModels
 			}
 			else
 			{
-				var name = this.FR2ViewModel.GetType().Name;
-				this.FR2 = ApplicationContext.MainWindow.FindResource(name) as DataTemplate;
+				string elementName;
+				var attribute = Attribute.GetCustomAttribute(this.FR1ViewModel.GetType(), typeof(PerspectiveFrameAttribute)) as PerspectiveFrameAttribute;
+				if (attribute != null) elementName = attribute.ElementName;
+				else elementName = this.FR1ViewModel.GetType().Name;
+				this.FR2 = ApplicationContext.MainWindow.FindResource(elementName) as DataTemplate;
 			}
 		}
 

@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="Attributes\FunctionBlockAttribute.cs" />
+    <Compile Include="Attributes\PerspectiveFrameAttribute.cs" />
     <Compile Include="Constractures\AppConfigSetting.cs" />
     <Compile Include="Criterias\ISearchContent.cs" />
     <Compile Include="Infrastructures\IApplicationContext.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Infrastructures\IUxManager.cs" />
     <Compile Include="Infrastructures\IWorkspaceViewModel.cs" />
     <Compile Include="Messages\DialogMessage.cs" />
-    <Compile Include="PerspectiveNames.cs" />
     <Compile Include="Presentations\PaneViewModelBase.cs" />
     <Compile Include="Presentations\Perspective.cs" />
     <Compile Include="Presentations\PerspectiveViewModelBase.cs" />

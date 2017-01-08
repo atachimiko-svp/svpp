@@ -1,17 +1,19 @@
-﻿using SVPS.Core.Presentations;
+﻿using SVPS.Core.Attributes;
+using SVPS.Core.Presentations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SVPS.Apps.Sample
+namespace SVPS.Apps.Ctm.ViewModels
 {
-	/// <summary>
-	/// サンプル用なので、あとで削除する。
-	/// </summary>
-	public class ManualMetaInputSampleViewModel : PaneViewModelBase
+	[PerspectiveFrame("NavigationListPane")]
+	public class NavigationListViewModel : PaneViewModelBase
 	{
+
+		#region Public メソッド
+
 		public override void OnActiveViewModel(string perspectiveName, object param)
 		{
 			
@@ -19,7 +21,9 @@ namespace SVPS.Apps.Sample
 
 		public override void OnDeActiveViewModel(string perspectiveName)
 		{
-			
+
 		}
+
+		#endregion Public メソッド
 	}
 }

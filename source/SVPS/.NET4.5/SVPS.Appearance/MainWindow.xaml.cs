@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SVPS.Core;
+using SVPS.Apps.Common;
 
 namespace SVPS.Views
 {
@@ -53,7 +54,8 @@ namespace SVPS.Views
 
 		private void ShowPreviewButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			var textName = Enum.GetName(typeof(PerspectiveNames), PerspectiveNames.Preview);
+			ApplicationContext.Ux.ChangePerspective(textName);
 		}
 
 		private void ShowSeiriButton_Click(object sender, RoutedEventArgs e)

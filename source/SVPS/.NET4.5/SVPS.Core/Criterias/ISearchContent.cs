@@ -8,5 +8,6 @@ namespace SVPS.Core.Criterias
 {
 	public interface ISearchContent
 	{
+		Task ExecFindByCategory();
 	}
 }

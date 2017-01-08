@@ -1,5 +1,6 @@
 ﻿using Livet;
 using log4net;
+using SVPS.Apps.Ctm;
 using SVPS.Apps.Sample;
 using SVPS.Core;
 using SVPS.Core.Attributes;
@@ -126,8 +127,11 @@ namespace SVPS
 			// TODO: 機能ブロック定義クラスを、自動でアセンブリから検索する
 
 
-			var f1 = new SampleFunctionBlock();
-			impl.ApplicationManager.RegisterFunctionBlock(f1);
+			//var f1 = new SampleFunctionBlock();
+			//impl.ApplicationManager.RegisterFunctionBlock(f1);
+
+			var f2 = new CtmFunctionBlock();
+			impl.ApplicationManager.RegisterFunctionBlock(f2);
 		}
 
 		/// <summary>

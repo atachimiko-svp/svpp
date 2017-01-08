@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace SVPS.Applus.DataSource
+namespace SVPS.DataSource
 {
 
 	public class ImageLazyItem : LazyItemBase<ServerData>, IContentLazyItem

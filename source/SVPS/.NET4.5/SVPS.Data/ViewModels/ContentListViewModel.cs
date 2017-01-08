@@ -73,7 +73,7 @@ namespace SVPS.Data.ViewModels
 			LOG.InfoFormat("ItemExecute {0}",item.Title);
 
 			var p = new { Content = item };
-			StartPerspective(PerspectiveNames.Preview, p);
+			//StartPerspective(PerspectiveNames.Preview, p);
 		}
 
 		public override async void OnActiveViewModel(string perspectiveName, object param)

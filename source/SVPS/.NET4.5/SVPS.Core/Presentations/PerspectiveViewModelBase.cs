@@ -35,11 +35,6 @@ namespace SVPS.Core.Presentations
 		public abstract void OnActiveViewModel(string perspectiveName, object param);
 		public abstract void OnDeActiveViewModel(string perspectiveName);
 
-		public void StartPerspective(PerspectiveNames perspectiveName, object param = null)
-		{
-			var textName = Enum.GetName(typeof(PerspectiveNames), perspectiveName);
-			ApplicationContext.Ux.ChangePerspective(textName, param);
-		}
 
 		#endregion Public メソッド
 

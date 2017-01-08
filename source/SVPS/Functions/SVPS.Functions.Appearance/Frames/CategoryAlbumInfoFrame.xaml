@@ -1,0 +1,20 @@
+﻿<UserControl
+    x:Class="SVPS.Functions.Views.Frames.CategoryAlbumInfoFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SVPS.Functions.Views.Frames"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!--  FRM-10  -->
+    <Grid Visibility="{Binding VisibilityFlag, Converter={StaticResource BoolToVisibilityConverter}}">
+        <TextBlock>カテゴリ（アルバム)情報表示フレーム</TextBlock>
+    </Grid>
+</UserControl>

@@ -14,6 +14,8 @@ namespace SVPS.Core.Presentations
 
 		private bool _IsOpen = true;
 
+		private bool _VisibilityFlag = true;
+
 		#endregion Private フィールド
 
 
@@ -25,6 +27,16 @@ namespace SVPS.Core.Presentations
 			set
 			{
 				_IsOpen = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		public bool VisibilityFlag
+		{
+			get { return _VisibilityFlag; }
+			set
+			{
+				_VisibilityFlag = value;
 				RaisePropertyChanged();
 			}
 		}

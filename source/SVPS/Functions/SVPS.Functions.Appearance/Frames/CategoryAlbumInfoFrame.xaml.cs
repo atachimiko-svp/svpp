@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace SVPS.Functions.Views.Frames
 {
 	/// <summary>
-	/// ReductionViewFrame.xaml の相互作用ロジック
+	/// CategoryAlbumInfoFrame.xaml の相互作用ロジック
 	/// </summary>
-	public partial class ReductionViewFrame : UserControl
+	public partial class CategoryAlbumInfoFrame : UserControl
 	{
-		public ReductionViewFrame()
+		public CategoryAlbumInfoFrame()
 		{
 			InitializeComponent();
-
-			var l = (ViewBase)(ReducationViewFrame_ListView.TryFindResource("IconView")); ;
-			ReducationViewFrame_ListView.View = l;
 		}
 	}
 }

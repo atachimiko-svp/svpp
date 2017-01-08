@@ -1,4 +1,5 @@
-﻿using SVPS.Core.Attributes;
+﻿using SVPS.Apps.Common;
+using SVPS.Core.Attributes;
 using SVPS.Core.Presentations;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace SVPS.Apps.Sample
 {
 	[FunctionBlock]
-	public class SampleViewModel : SDocumentViewModelBase
+	public class SampleViewModel : AppsDocumentViewModelBase
 	{
 
 		#region Private フィールド
@@ -52,6 +53,7 @@ namespace SVPS.Apps.Sample
 		public override void OnActiveViewModel(string perspectiveName, object param)
 		{
 			SampleContextualMenuVisibilityFlag = true;
+			this.RBulgeVisibilityFlag = true;
 		}
 
 		public override void OnDeActiveViewModel(string perspectiveName)

@@ -35,7 +35,7 @@ namespace SVPS.Core.Infrastructures
 
 		PerspectiveViewModelBase GetPerspectiveViewModel(PerspectiveViewModelHandle hpvm);
 
-		bool SetPerspectiveViewModel(PerspectiveNames perspectiveName, ViewpositionNames position, PerspectiveViewModelHandle handle);
+		bool SetPerspectiveViewModel(string perspectiveName, ViewpositionNames position, PerspectiveViewModelHandle handle);
 
 		#endregion Public メソッド
 
